@@ -19,7 +19,7 @@
   },
   "rules": {
     "no-debugger": "off",
-    "no-console": 0,
+    "no-console": 1,
     "class-methods-use-this": "off",
     "import/no-unresolved": "off",
     "import/extensions": [
