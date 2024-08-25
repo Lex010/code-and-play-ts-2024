@@ -11,6 +11,7 @@ export default {
   output: {
     filename: 'bundle.js',
     path: path.resolve(dirname, 'dist'),
+    assetModuleFilename: 'assets/[name][ext]',
   },
   resolve: {
     extensions: ['.ts', '.js'],
@@ -26,6 +27,13 @@ export default {
         test: /\.css$/i,
         use: [MiniCssExtractPlugin.loader, 'css-loader'],
       },
+      {
+        test: /\.(png|jpg|jpeg|gif|svg|ico)$/, // Для загрузки изображений и фавиконок
+        type: 'asset/resource',
+        generator: {
+          filename: 'assets/[name][ext]', // Помещает файлы в папку assets
+        },
+      },
     ],
   },
   plugins: [
@@ -33,7 +41,7 @@ export default {
       template: 'src/index.html',
     }),
     new MiniCssExtractPlugin({
-      filename: 'style.css',
+      filename: 'style.css', // Извлекает все CSS в один файл
     }),
   ],
   devServer: {
